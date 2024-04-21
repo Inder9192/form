@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+    /* Centering the form */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    form {
+        width: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    /* Some basic styling for inputs and labels */
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="password"],
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .error-message {
+        color: red;
+    }
+</style>
+</head>
+<body>
+
+<form id="myForm">
+    <h2>Registration Form</h2>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="password">Password (3-6 characters):</label>
+    <input type="password" id="password" name="password" minlength="3" maxlength="6" required>
+    
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" minlength="3" maxlength="6" required>
+    
+    <label for="age">Age:</label>
+    <select id="age" name="age" required>
+        <option value="">Select Age</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+    </select>
+    
+    <label>Skills:</label>
+    <div>
+        <input type="checkbox" id="css" name="skills" value="CSS">
+        <label for="css">CSS</label>
+    </div>
+    <div>
+        <input type="checkbox" id="javascript" name="skills" value="JavaScript">
+        <label for="javascript">JavaScript</label>
+    </div>
+    <div>
+        <input type="checkbox" id="html" name="skills" value="HTML">
+        <label for="html">HTML</label>
+    </div>
+    <div>
+        <input type="checkbox" id="rust" name="skills" value="Rust">
+        <label for="rust">Rust</label>
+    </div>
+    
+    <input type="submit" onclick="bruh()" value="Submit">
+    
+    <div id="error-message" class="error-message"></div>
+</form>
+
+<script>
+    function bruh(){
+
+    
+    var name = document.getElementById("name").value;
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    
+    // Check if all fields are filled
+    if (name === "" || password === "" || confirmPassword === "" || document.getElementById("age").value === "") {
+    document.getElementById("error-message").textContent = "All contents should be filled";
+    return;
+}
+
+    
+    // Check if name matches
+    if (name !== "INDER") {
+        document.getElementById("error-message").textContent = "Wrong name entered";
+        return;
+    }
+    
+    // Check if password matches criteria
+    if (password !== "1598") {
+        document.getElementById("error-message").textContent = "Wrong password entered";
+        return;
+    }
+    
+    // Check if password and confirm password match
+    if (password !== confirmPassword) {
+        document.getElementById("error-message").textContent = "Enter the same password";
+        return;
+    }
+    
+    // Alert login successful if all validations pass
+    alert("Login successful!");
+};
+</script>
+
+</body>
+</html>
